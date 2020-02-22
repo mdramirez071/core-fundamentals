@@ -1,3 +1,49 @@
+console.log('Hello World!!!');
+/* Variables and data types */
+var firstName = 'Michael';
+console.log(firstName);
+
+var lastName = 'Ramirez';
+console.log(lastName);
+var age = 31;
+var verifyAge = true;
+console.log(verifyAge);
+
+var job;
+console.log(job);
+
+job = 'Technical Support Analyst';
+console.log(job);
+
+var _3years = 3;
+var michaelDavid = 'Michael and David';
+var _delete = 23;
+
+/* Variable mutation and type coercion */
+var firstName = 'Michael';
+var age = 31;
+
+// Type coercion
+
+console.log(firstName + ' ' + age);
+
+var job, isMarried;
+job = 'Technical Support Analyst';
+isMarried = false;
+
+console.log(firstName + ' is a ' + age + ' year old' + job + '. Is he married? ' + isMarried);
+
+//Variable mutation
+age = 'twenty eight';
+job = 'driver';
+
+alert(firstName + ' is a ' + age + ' year old ' + job + '. Is he married? ' + isMarried);
+
+var lastName = prompt('What is his last Name?');
+console.log(firstName + ' ' + lastName);
+//Remember you can use either '$' or '_' in front of variable names but
+//not keywords such as function, delete, or if
+
 /*****************************
 * Variables and data types
 */
