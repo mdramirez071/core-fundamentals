@@ -45,6 +45,86 @@ console.log(firstName + ' ' + lastName);
 //not keywords such as function, delete, or if
 
 /*****************************
+* Basic operators
+*/
+var year, yearJohn, yearMark;
+now = 2018;
+ageJohn = 28;
+ageMark = 33;
+
+//Math operators (include +, -, /, *)
+yearJohn = now - ageJohn;
+yearMark = now - ageMark;
+
+console.log(yearJohn);
+
+console.log(now + 2);
+console.log(now * 2);
+console.log(now / 10);
+
+//Logical operators
+//the below expression evaluates to true since John is in fact younger
+var johnOlder = ageJohn < ageMark;
+console.log(johnOlder);
+
+//typeof operator
+console.log(typeof johnOlder);
+console.log(typeof ageJohn);
+console.log(typeof 'Mark is older than John');
+var x;
+console.log(typeof x);
+
+/*****************************
+* Operator precedence
+*/
+// REMEMBER TO REFERENCE OPERATOR PRECENDENCE TABLE ON MDN TO SEE WHICH OPERATORS WILL EXECUTE FIRST
+// FOR QUICK REFERENCE: REMEMBER PEMDAS!
+var ageJohn = now - yearJohn;
+var ageMark = 35;
+var average = (ageJohn + ageMark) / 2;
+console.log(average);
+
+//Multiple assignments
+var x, y;
+x = y = (3 + 5) * 4 - 6; //8 * 4 - 6 // 32 - 6 //26
+//Logically you would think that y would have a value of undefined because x is undefined initially
+//However, this is not the case due to the Operator Precendence Table! **IMPORTANT**
+console.log(x, y);
+
+//More operators
+x *= 2;
+console.log(x);
+x += 10;
+console.log(x);
+x--;
+console.log(x);
+
+
+/*
+CODE CHALLENGE #1
+*/
+
+//Calculate Mark and John's BMI using the following formula: BMI = mass / height^2 (mass is in kg and height is in meters)
+var markHeight = 6; //in meters
+var markMass = 100; //in kg
+//Mark's BMI
+var markBMI = 100 / (6 * 6);
+
+var johnHeight = 5; //in meters
+var johnMass = 90; //in kg
+//John's BMI
+var johnBMI = 90 / (5 * 5);
+
+//Boolean variable that checks whether Mark has a higher BMI than John
+var markHigherBMI = markBMI > johnBMI;
+
+//Log the output to the console that checks whether Mark has a higher BMI than John
+console.log(`Is Mark's BMI higher than John's? ${markHigherBMI}`);
+
+
+
+
+/*****************************
 * Variables and data types
 */
 /*
