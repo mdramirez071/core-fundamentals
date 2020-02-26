@@ -249,24 +249,23 @@ switch (true) {
  * Truthy and Falsy values and equality operators
  */
 
- //falsy values: undefined, null (intentionally not given a value), 0, '', NaN
- //truthy values: NOT falsy values
- //The following is an if-else statement that verifies whether a variable has been defined or NOT.
+//falsy values: undefined, null (intentionally not given a value), 0, '', NaN
+//truthy values: NOT falsy values
+//The following is an if-else statement that verifies whether a variable has been defined or NOT.
 
 var height;
 
 height = 23;
 //Because '0' is a falsy value we must specify height === 0 as a condition in order to print out that the Variable is defined.
-if(height || height === 0){
-    console.log('Variable is defined');
-}
-else {
-    console.log('Variable is NOT defined.');
+if (height || height === 0) {
+  console.log("Variable is defined");
+} else {
+  console.log("Variable is NOT defined.");
 }
 
 // Equality operators
-if (height === '23'){
-    console.log('The == operator does type coercion'); //meaning the number 23 will be coerced into a string value before making a comparison
+if (height === "23") {
+  console.log("The == operator does type coercion"); //meaning the number 23 will be coerced into a string value before making a comparison
 }
 
 //PRO TRIP:
@@ -275,38 +274,162 @@ if (height === '23'){
 
 /*****************************
  * CODING CHALLENGE 2
-*/
+ */
 //Scores for last 3 games for both John and Mike
 //John's last 3 games (89, 120, 103 points)
 //Mike's last 3 games (116, 94, 123 points)
 
 //Step 1 Calculate the average score for each team
-var johnAvgScore = (89 + 120 + 103) / 3
-var mikeAvgScore = (116 + 94 + 123) / 3
+var johnAvgScore = (89 + 120 + 103) / 3;
+var mikeAvgScore = (116 + 94 + 123) / 3;
 //EXTRA CREDIT: Step 4
-var maryAvgScore = (97 + 134 + 105) / 3
+var maryAvgScore = (97 + 134 + 105) / 3;
 
 console.log(johnAvgScore, mikeAvgScore, maryAvgScore);
 
 //Step 2 Decide who wins based on whoever has the highest average score
-if(johnAvgScore > mikeAvgScore && johnAvgScore > maryAvgScore){
-    console.log('John has the highest average score, John\'s the WINNER!');
-}
-else if (maryAvgScore > johnAvgScore && maryAvgScore > mikeAvgScore){
-    console.log('Mary has the highest average score, Mary\'s the WINNER!');
-}
-else if (mikeAvgScore > johnAvgScore && mikeAvgScore > maryAvgScore){
-    console.log('Mike has the highest average score, Mike\'s the WINNER!');
+if (johnAvgScore > mikeAvgScore && johnAvgScore > maryAvgScore) {
+  console.log("John has the highest average score, John's the WINNER!");
+} else if (maryAvgScore > johnAvgScore && maryAvgScore > mikeAvgScore) {
+  console.log("Mary has the highest average score, Mary's the WINNER!");
+} else if (mikeAvgScore > johnAvgScore && mikeAvgScore > maryAvgScore) {
+  console.log("Mike has the highest average score, Mike's the WINNER!");
 }
 //Step 3 this condition was added as part of step 3 in addition to changing the scores of john and mike's last 3 games.
 else {
-    console.log('John, Mike, and Mary have the same score! The match is a DRAW!');
+  console.log("John, Mike, and Mary have the same score! The match is a DRAW!");
 }
 
+/*****************************
+ * Functions
+ */
+function calculateAge(birthYear) {
+  return 2020 - birthYear;
+}
 
+var ageJohn = calculateAge(1950);
+var ageMike = calculateAge(1988);
+var ageJane = calculateAge(1993);
+console.log(ageJohn, ageMike, ageJane);
 
+function yearsUntilRetirement(year, firstName) {
+  var age = calculateAge(year);
+  var retirement = 65 - age;
 
+  if (retirement > 0) {
+    console.log(firstName + " retires in " + retirement + " years.");
+  } else {
+    console.log(firstName + " is already retired.");
+  }
+}
 
+yearsUntilRetirement(1990, "John");
+yearsUntilRetirement(1958, "Mike");
+yearsUntilRetirement(1948, "Jane");
+
+/*****************************
+ * Function Statements and Expressions
+ */
+//Expressions are code that produces a result/value
+//Whenever Javascript expects a value it means you should write an Expression
+//Anything that does not produce any immediate result/value are called "Statements". These can also be called Function Declaration if you have a function that does not produce any immediate value/result.
+var whatDoYouDo = function(job, firstName) {
+  switch (job) {
+    case "teacher":
+      return firstName + " teaches kids how to code";
+    case "driver":
+      return firstName + " drives a cab in Lisbon.";
+    case "designer":
+      return firstName + " designs beautiful websites";
+    default:
+      return firstName + " does something else";
+  }
+};
+
+console.log(whatDoYouDo("teacher", "John"));
+console.log(whatDoYouDo("designer", "Jane"));
+console.log(whatDoYouDo("retired", "Mark"));
+
+/*****************************
+ * Arrays
+ */
+// Initialize new array
+var names = ["John", "Mark", "Jane"];
+var years = new Array(1990, 1969, 1948);
+
+console.log(names[0]);
+console.log(names);
+console.log(names.length);
+
+// Mutate array data
+names[1] = "Ben";
+names[names.length] = "Mary";
+console.log(names);
+
+// Different data types
+var john = ["John", "Smith", 1990, "teacher", false];
+
+john.push("blue");
+john.unshift("Mr.");
+console.log(john);
+
+john.pop();
+john.shift();
+console.log(john);
+//Because the element 23 does not exist in the array it will return an index of -1
+console.log(john.indexOf(23));
+
+var isDesigner =
+  john.indexOf("designer") === -1
+    ? "John is NOT a designer"
+    : "John IS a designer";
+console.log(isDesigner);
+
+/*****************************
+ * CODING CHALLENGE 3
+ */
+//Write a function that calculates the tip based on the amount of the bill
+//Write conditional statements that multiplies the bill by the appropriate tip amount
+var billAmount1 = 124;
+var billAmount2 = 48;
+var billAmount3 = 268;
+
+function calculateTip(billAmount) {
+  //Variables that will hold the tip amount and the final total amount (bill + tip)
+  var tip;
+  var total;
+  if (billAmount < 50) {
+    tip = billAmount * 0.2;
+    tips.push(tip);
+    total = tip + billAmount;
+    totals.push(total);
+  } else if (billAmount >= 50 && billAmount < 200) {
+    tip = billAmount * 0.15;
+    tips.push(tip);
+    total = tip + billAmount;
+    totals.push(total);
+  } else {
+    tip = billAmount * 0.1;
+    tips.push(tip);
+    total = tip + billAmount;
+    totals.push(total);
+  }
+  return [tip, total];
+}
+//The tips array will hold the calculated tips for each bill
+const tips = [];
+
+//The totals array will hold the calculate totals for each bill plus their tips
+const totals = [];
+
+console.log(calculateTip(billAmount1));
+console.log(calculateTip(billAmount2));
+console.log(calculateTip(billAmount3));
+
+//Prints out tips and totals for each bill in sequential order
+console.log(tips, totals);
+
+/* SEE ALTERNATIVE SOLUTION BELOW FROM INSTRUCTOR (slightly cleaner version)*/ 
 
 /*****************************
  * Variables and data types
