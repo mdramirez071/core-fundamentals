@@ -486,38 +486,44 @@ console.log(john);
  */
  //Calculate Mark and John's BMI using the following formula: BMI = mass / height^2 (mass is in kg and height is in meters)
 //Step 1 Create an object with properties for John and Mark's full name, mass, and height.
-var markBMI = {
+var mark = {
   name: 'Mark Johnson',
   height: 6, //in meters
   mass: 100, //in kg
   //Step 2 - first half
-  calcBMI: function(height, mass){
-    return this.mass / (this.height * this.height);
+  calcBMI: function(){
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
   }
 }
 
-var johnBMI = {
-  name: 'John Smith',
+var jack = {
+  name: 'Jack Smith',
   height: 5, //in meters
   mass: 90, //in kg
   //Step 2 - 2nd half
-  calcBMI: function(height, mass){
-    return this.mass / (this.height * this.height);
+  calcBMI: function(){
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
   }
 }
 //Invoke the method called calcBMI in order to save/return the BMI in both Mark and John's objects
-var markResult = markBMI.calcBMI = markBMI.calcBMI();
-var johnResult = johnBMI.calcBMI = johnBMI.calcBMI();
+// mark.calcBMI();
+// jack.calcBMI();
 
-if(markResult > johnResult){
-  console.log(markBMI.name + ' has the highest BMI at ' + markResult)
+//Instead of calculating the BMI and reading the value we can do it instantaneously in the conditional statements below
+if(mark.calcBMI() > jack.calcBMI()){
+  console.log(mark.name + ' has the highest BMI at ' + mark.bmi)
 }
-else if(markResult < johnResult){
-  console.log(johnBMI.name + ' has the highest BMI at ' + johnResult)
+//since Mark's and Jack's BMI has already been calculated it doesn't need to be calculated again.
+else if(mark.bmi < jack.bmi){
+  console.log(jack.name + ' has the highest BMI at ' + jack.bmi)
 }
 else {
-  console.log(johnBMI.name + ' and ' + markBMI.name + ' has the same BMI!');
+  console.log(jack.name + ' and ' + mark.name + ' has the same BMI!');
 }
+
+//REMEMBER IT IS IMPORTANT && BEST PRACTICE TO STORE METHODS INSIDE OF OBJECTS
 
 /*****************************
  * Variables and data types
