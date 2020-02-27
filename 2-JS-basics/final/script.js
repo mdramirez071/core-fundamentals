@@ -165,7 +165,8 @@ var johnHeight = 5; //in meters
 var johnMass = 90; //in kg
 //John's BMI
 var johnBMI = 90 / (5 * 5);
-
+console.log(markBMI);
+console.log(johnBMI);
 if (markBMI > johnBMI) {
   console.log("Mark's BMI is higher than John's");
 } else {
@@ -430,6 +431,93 @@ console.log(calculateTip(billAmount3));
 console.log(tips, totals);
 
 /* SEE ALTERNATIVE SOLUTION BELOW FROM INSTRUCTOR (slightly cleaner version)*/ 
+
+/*****************************
+ * Objects and properties
+ */
+//Object literal is way of defining object using the format below
+var john = {
+  firstName: 'John',
+  lastName: 'Smith',
+  birthYear: '1990',
+  family: ['Jane', 'Mark', 'Bob', 'Emily'],
+  job: 'teacher',
+  isMarried: false,
+};
+//dot notation
+console.log(john.firstName);
+console.log(john['lastName']);
+var x = 'birthYear';
+console.log(john[x]);
+
+john.job = 'designer';
+john['isMarried'] = true;
+console.log(john);
+
+//Creates an empty object called jane
+var jane = new Object();
+//We are now going to fill up our object
+jane.firstName = 'Jane';
+jane.birthYear = 1969;
+jane['lastName'] = 'Smith';
+console.log(jane);
+
+/*****************************
+ * Objects and methods
+ */
+ var john = {
+  firstName: 'John',
+  lastName: 'Smith',
+  birthYear: '1990',
+  family: ['Jane', 'Mark', 'Bob', 'Emily'],
+  job: 'teacher',
+  isMarried: false,
+  calcAge: function(birthYear){ //this is a function expression assigned as a method to the Object 'john'
+  //'this' means the current object itself 'this is a special keyword'
+    this.age = 2018 - this.birthYear;
+  }
+};
+//KEEP IN MIND THAT ONLY OBJECTS HAVE METHODS.
+john.age = john.calcAge();
+console.log(john);
+
+/*****************************
+ * CODING CHALLENGE 4
+ */
+ //Calculate Mark and John's BMI using the following formula: BMI = mass / height^2 (mass is in kg and height is in meters)
+//Step 1 Create an object with properties for John and Mark's full name, mass, and height.
+var markBMI = {
+  name: 'Mark Johnson',
+  height: 6, //in meters
+  mass: 100, //in kg
+  //Step 2 - first half
+  calcBMI: function(height, mass){
+    return this.mass / (this.height * this.height);
+  }
+}
+
+var johnBMI = {
+  name: 'John Smith',
+  height: 5, //in meters
+  mass: 90, //in kg
+  //Step 2 - 2nd half
+  calcBMI: function(height, mass){
+    return this.mass / (this.height * this.height);
+  }
+}
+//Invoke the method called calcBMI in order to save/return the BMI in both Mark and John's objects
+var markResult = markBMI.calcBMI = markBMI.calcBMI();
+var johnResult = johnBMI.calcBMI = johnBMI.calcBMI();
+
+if(markResult > johnResult){
+  console.log(markBMI.name + ' has the highest BMI at ' + markResult)
+}
+else if(markResult < johnResult){
+  console.log(johnBMI.name + ' has the highest BMI at ' + johnResult)
+}
+else {
+  console.log(johnBMI.name + ' and ' + markBMI.name + ' has the same BMI!');
+}
 
 /*****************************
  * Variables and data types
