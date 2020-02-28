@@ -507,7 +507,7 @@ var jack = {
     return this.bmi;
   }
 }
-//Invoke the method called calcBMI in order to save/return the BMI in both Mark and John's objects
+//Invoke the method called calcBMI in order to save/return the BMI in both Mark and John's objects - THIS PART IS NO LONGER NEEDED SEE LINE 514
 // mark.calcBMI();
 // jack.calcBMI();
 
@@ -524,6 +524,14 @@ else {
 }
 
 //REMEMBER IT IS IMPORTANT && BEST PRACTICE TO STORE METHODS INSIDE OF OBJECTS
+
+
+/*****************************
+ * Loops and iteration
+ */
+
+
+
 
 /*****************************
  * Variables and data types
