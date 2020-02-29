@@ -529,8 +529,45 @@ else {
 /*****************************
  * Loops and iteration
  */
+//continue and break statements
+var john = ['John', 'Smith', 1990, 'designer', false, 'blue'];
+
+for(var i=0; i< john.length; i++){
+  if (typeof john[i] !== 'string') continue;
+  console.log(john[i]);
+}
+
+for(var i=0; i<john.length; i++){
+  if (typeof john[i] !== 'string') break;
+  console.log(john[i]);
+}
+
+//Looping backwards
+for(var i=john.length -1; i >= 0; i--){
+
+}
 
 
+/*****************************
+ * CODING CHALLENGE 5
+ */
+//Using information from the tip calculator challenge previously, create an advanced version
+//using everything we learned so far!
+
+//John and his family went to 5 different restaurants. The bills were
+//$124, $48, $268, $180, and $42.
+
+//John likes to tip 20% of the bill when the bill is less than $50, 15% when the
+//bill is between $50 and $200, and 10% if the bill is more than $200.
+
+//Implement a tip calculator using objects and loops:
+//1. Create an object with an array for the bill values
+//2. Add a method to calculate the tip
+//3. This method should include a loop to iterate over all the paid bills and do the tip calculation
+//4. As an output, create 1) a new array containing all tips, and 2) an array containing final paid amounts
+//HINT: start with 2 empty arrays as properties then fill them up with the loop
+
+//SEE EXTRA INFO FOR EXTRA CREDIT:
 
 
 /*****************************
