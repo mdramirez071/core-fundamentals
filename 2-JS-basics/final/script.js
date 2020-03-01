@@ -559,7 +559,29 @@ for(var i=john.length -1; i >= 0; i--){
 
 //John likes to tip 20% of the bill when the bill is less than $50, 15% when the
 //bill is between $50 and $200, and 10% if the bill is more than $200.
-
+var john = {
+  billValues: [124, 48, 268, 180, 42],
+  tips: [],
+  totals: [],
+  calcTip: function(){
+    for(let i=0; i<this.billValues.length; i++){
+      if(this.billValues[i] < 50){
+        this.tips.push(this.billValues[i]*.20);
+        this.totals.push(this.billValues[i]*.20+this.billValues[i])
+      }
+      else if(this.billValues[i] >= 50 && this.billValues[i] < 200){
+        this.tips.push(this.billValues[i] *.15);
+        this.totals.push(this.billValues[i]*.15+this.billValues[i])
+      }
+      else {
+        this.tips.push(this.billValues[i] *.10);
+        this.totals.push(this.billValues[i]*.10+this.billValues[i])
+      }
+    }
+    return [this.tips,this.totals];
+  }
+}
+console.log(john.calcTip());
 //Implement a tip calculator using objects and loops:
 //1. Create an object with an array for the bill values
 //2. Add a method to calculate the tip
@@ -567,8 +589,51 @@ for(var i=john.length -1; i >= 0; i--){
 //4. As an output, create 1) a new array containing all tips, and 2) an array containing final paid amounts
 //HINT: start with 2 empty arrays as properties then fill them up with the loop
 
-//SEE EXTRA INFO FOR EXTRA CREDIT:
+//EXTRA AFTER FINISHING:
+var mark = {
+  billValues: [77, 375, 110, 45],
+  tips: [],
+  totals: [],
+  calcTip: function(){
+    for(let i=0; i<this.billValues.length; i++){
+      if(this.billValues[i] < 100){
+        this.tips.push(this.billValues[i] * .20);
+        this.totals.push(this.billValues[i]*.20+this.billValues[i]);
+      }
+      else if(this.billValues[i] >= 100 && this.billValues[i] < 300){
+        this.tips.push(this.billValues[i] * .10);
+        this.totals.push(this.billValues[i]*.10+this.billValues[i]);
+      }
+      else {
+        this.tips.push(this.billValues[i] * .25);
+        this.totals.push(this.billValues[i]*.25+this.billValues[i]);
+      }
+    }
+    return [this.tips,this.totals];
+  }
+}
+console.log(mark.calcTip());
+//Create a function that takes in an array of tips and calculates the average tip amount for John
+function calcAvgTip(arrayOfTips){
+  let sum = 0;
+  for(let i=0; i<arrayOfTips.length; i++){
+    sum += arrayOfTips[i]; 
+  }
+  return (sum / arrayOfTips.length);
+}
+//Calculates and compares the average tips for John and Mark
+mark.average = calcAvgTip(mark.tips);
+john.average = calcAvgTip(john.tips)
+if(mark.average > john.average){
+  console.log('On average, Mark tips higher than John. Mark\'s average tip amount is $' + mark.average);
+}
+else {
+  console.log('On average, John tips higher than Mark. John\'s average tip amount is $' + john.average);
+}
 
+/*****************************
+ * Javascript Versions: ES5, ES6 / ES2015 and ES6+, 
+ */
 
 /*****************************
  * Variables and data types
