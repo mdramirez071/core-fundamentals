@@ -634,6 +634,8 @@ else {
 /*****************************
  * Javascript Versions: ES5, ES6 / ES2015 and ES6+, 
  */
+//It's important to learn fundamentals of ES5 before proceeding to ES6 fundamentals.
+
 
 /*****************************
  * Variables and data types
