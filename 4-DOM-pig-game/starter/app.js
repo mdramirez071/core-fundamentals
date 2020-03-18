@@ -13,14 +13,78 @@ var scores, roundScore, activePlayer, dice;
 
 scores = [0, 0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 dice = Math.floor(Math.random() * 6) + 1;
 
-document.querySelector('#current-' + activePlayer).textContent = dice;
-document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
+// document.querySelector('#current-' + activePlayer).textContent = dice;
+// document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
 
-var x = document.querySelector('#score-0').textContent;
-console.log(x);
+// var x = document.querySelector('#score-0').textContent;
+// console.log(x);
 
-document.querySelector('.dice').style.display = 'none';
+document.querySelector(".dice").style.display = "none";
+
+//If you know the exact id of an element and dont need to query it. use elemetnById for faster performance
+document.getElementById("score-0").textContent = "0";
+document.getElementById("score-1").textContent = "0";
+document.getElementById("current-0").textContent = "0";
+document.getElementById("current-1").textContent = "0";
+
+function btn() {
+  //Do something here
+}
+btn();
+
+document.querySelector(".btn-roll").addEventListener("click", function() {
+  //1. Random number
+  var dice = Math.floor(Math.random() * 6) + 1;
+
+  //2. Display the result
+  var diceDOM = document.querySelector(".dice");
+  diceDOM.style.display = "block";
+  diceDOM.src = "dice-" + dice + ".png";
+
+  //3. Update the round score IF the rolled number was NOT a 1
+  if (dice !== 1) {
+    //Add score
+    roundScore += dice;
+    document.querySelector("#current-" + activePlayer).textContent = roundScore;
+  } else {
+    //Next player
+    nextPlayer();
+  }
+});
+
+document.querySelector('.btn-hold').addEventListener('click', function() {
+    // Add CURRENT score to GLOBAL score
+    scores[activePlayer] += roundScore;
+
+    // Update the UI
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+    // Check if player won the game
+    let player1 = document.getElementById('score-' + activePlayer).innerHTML
+    if(player1 > 10){
+        document.getElementById('current-' + activePlayer).textContent = 'Player' + activePlayer + 'WON!';
+    }
+
+
+});
+
+//We're creating the function below in order to follow the DRY principle (Dont Repeat Yourself)
+function nextPlayer(){
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    roundScore = 0;
+
+    document.getElementById("current-0").textContent = "0";
+    document.getElementById("current-1").textContent = "0";
+
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+
+    //document.querySelector('.player-0-panel').classList.add('active');
+    //document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector(".dice").style.display = "none";
+}
+
